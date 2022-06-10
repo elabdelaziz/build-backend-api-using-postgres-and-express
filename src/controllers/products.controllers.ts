@@ -1,6 +1,5 @@
-import { NextFunction, Request, Response } from 'express'
+import { Request, Response } from 'express'
 import ProductStore from '../models/product'
-import config from '../config'
 
 const ProductModel = new ProductStore()
 
