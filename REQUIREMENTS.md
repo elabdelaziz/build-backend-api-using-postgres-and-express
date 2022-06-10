@@ -1,42 +1,78 @@
-# API Requirements
-The company stakeholders want to create an online storefront to showcase their great product ideas. Users need to be able to browse an index of all products, see the specifics of a single product, and add products to an order that they can view in a cart page. You have been tasked with building the API that will support this application, and your coworker is building the frontend.
+## Users
 
-These are the notes from a meeting with the frontend developer that describe what endpoints the API needs to supply, as well as data shapes the frontend and backend have agreed meet the requirements of the application. 
+* index [token required]: `/api/users` [get]
+* create [token required]: `/api/users` [post]
+* show [token required]: `/api/users/:id` [get]
+* update: `/api/users/:id` [patch]
+* delete: `/api/users/:id` [delete]
 
-## API Endpoints
-#### Products
-- Index 
-- Show
-- Create [token required]
-- [OPTIONAL] Top 5 most popular products 
-- [OPTIONAL] Products by category (args: product category)
+* Authenticate (args: username, password) [token required] : `/auth` [GET]
 
-#### Users
-- Index [token required]
-- Show [token required]
-- Create N[token required]
+## Products
 
-#### Orders
-- Current Order by user (args: user id)[token required]
-- [OPTIONAL] Completed Orders by user (args: user id)[token required]
+* index: `/api/products` [get]
+* create [token required]: `/api/products` [post]
+* update: `/api/products/:id` [patch]
+* delete: `/api/products/:id` [delete]
 
-## Data Shapes
-#### Product
--  id
-- name
-- price
-- [OPTIONAL] category
+## Orders
 
-#### User
-- id
-- firstName
-- lastName
-- password
+* index: `/api/orders` [get]
+* create: `/api/orders` [post]
+* show: `/api/orders/:userId` [get]
+* update [token required]: `/api/orders/:userId` [put]
+* delete: `/api/orders/:orderId` [delete]
 
-#### Orders
-- id
-- id of each product in the order
-- quantity of each product in the order
-- user_id
-- status of order (active or complete)
+## order_products
+* create: `/api/orders/:id/products` [post]
 
+
+# Data Shapes
+- - - -
+
+## User
+* id
+* email
+* user_name
+* first_name
+* last_name
+* password
+
+data          | type
+------------- | -------------
+id            | SERIAL PRIMARY KEY
+email         | VARCHAR(50) unique
+user_name     | VARCHAR(50)
+first_name    | VARCHAR(50)
+last_name     | VARCHAR(50)
+password      | VARCHAR(255)
+
+## Product
+* id
+* title
+* price
+* category
+
+data          | type
+------------- | -------------
+id            | SERIAL PRIMARY KEY
+title         | VARCHAR(150)
+price         | integer
+category      | VARCHAR(100)
+
+## Order
+
+data          | type
+------------- | -------------
+id            | SERIAL PRIMARY KEY
+status        | VARCHAR(64)
+user_id       | BIGINT FOREIGN KEY to users(id)
+
+## Order-products
+
+data          | type
+------------- | -------------
+id            | SERIAL PRIMARY KEY
+quantity      | INTEGER
+order_id      | BIGINT FOREIGN KEY to users(id)
+product_id    | BIGINT FOREIGN KEY to products(id)
