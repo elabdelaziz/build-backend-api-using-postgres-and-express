@@ -1,6 +1,5 @@
-import { NextFunction, Request, Response } from 'express'
+import { Request, Response } from 'express'
 import orderStore from '../models/order'
-import config from '../config'
 
 const OrderModel = new orderStore()
 
@@ -32,7 +31,6 @@ export const index = async (req: Request, res: Response) => {
 
 export const getOne = async (req: Request, res: Response) => {
   const userId = req.params.userId
-  // console.log(req.params)
   try {
     const order = await OrderModel.getOne(userId as unknown as number)
     res.json({

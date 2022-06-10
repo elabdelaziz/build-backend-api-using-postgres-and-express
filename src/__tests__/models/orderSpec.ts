@@ -58,7 +58,6 @@ describe('Tests for Order store', () => {
       user_id: newUser.id,
     } as Order
     const data = await orderStore.create(order)
-    // console.log(data)
     expect(data.status).toBeDefined()
   })
 
@@ -69,7 +68,6 @@ describe('Tests for Order store', () => {
 
   it('should show a specific order', async () => {
     const data = await orderStore.getOne(newOrder.user_id)
-    // console.log(data)
     expect(data.id).toBe(newOrder.id)
   })
 
@@ -96,7 +94,6 @@ describe('Tests for Order store', () => {
       newOrder.id as unknown as string,
       newProduct.id as unknown as string
     )
-    // console.log(data)
     expect(data).toBeTruthy
   })
 
