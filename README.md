@@ -12,3 +12,16 @@
 
 1. run `npm run migration:up` to create all tables
 2. you can run `npm db-migrate down` to drop tables
+
+# Environment Variables
+PORT=3000
+NODE_ENV=dev
+POSTGRES_HOST=localhost
+POSTGRES_PORT=5432
+POSTGRES_DB=storefront_database
+POSTGRES_DB_test=storefront_database_test
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=your_password_here
+BCRYPT_PASSWORD=secret_password
+SALT_ROUNDS=10
+JWT_SECRET=secret_token
