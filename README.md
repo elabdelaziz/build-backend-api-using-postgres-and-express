@@ -1,5 +1,20 @@
 # Storefront Backend Project
 
+## Connecting to database (Steps created in terminal)
+
+* ### Create a Postgres user 
+
+    * CREATE USER `your_name` WITH PASSWORD `'your_password'`
+
+* ### Create database for development and testing
+
+    * CREATE DATABASE storefront_database
+    * CREATE DATABASE storefront_database_test
+
+* ### Grand database privileges to user in both databases
+
+    * GRANT ALL PRIVILEGES ON storefront_database TO `your_name`
+    * GRANT ALL PRIVILEGES ON storefront_database_test TO `your_name`
 ## Getting Started
 1. start by making a .env file to be compatible with data in src/config.ts
 2. to install dependencies: `npm install`
@@ -14,6 +29,7 @@
 2. you can run `npm db-migrate down` to drop tables
 
 # Environment Variables
+
 * PORT=3000 
 
 * NODE_ENV=dev
